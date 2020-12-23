@@ -24,10 +24,10 @@ class LinkedList<T> {
   }
 
   append(data: T) {
-    // initial iteration is the thead
+    // initial iteration is the head
     let current = this.head
 
-    // set head to new node when there's no items inside the list
+    // set head to new node when there's no item inside the list
     if (!this.head) {
       this.head = new LinkedListNode(data, null)
       this.size++
@@ -41,6 +41,23 @@ class LinkedList<T> {
 
     current.next = new LinkedListNode(data, null)
     this.size++
+  }
+
+  getList() {
+    let current = this.head
+    let result: T[] = []
+
+    if (!this.head) {
+      return "You must have at least 1 item to get the list"
+    }
+
+    for (let i = 0; i < this.size; i++) {
+      result.push(current.value)
+      if (!current.next) break
+      current = current.next
+    }
+
+    return result
   }
 }
 
