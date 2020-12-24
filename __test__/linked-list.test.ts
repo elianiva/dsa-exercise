@@ -6,7 +6,7 @@ describe("> SinglyLinkedList", () => {
       const list = new SinglyLinkedList<number>()
       list.prepend(100)
 
-      expect(list.head.value).toBe(100)
+      expect(list.head?.value).toBe(100)
       expect(list.size).toBe(1)
     })
 
@@ -16,9 +16,9 @@ describe("> SinglyLinkedList", () => {
       list.prepend(200)
       list.prepend(300)
 
-      expect(list.head.value).toBe(300)
-      expect(list.head.next.value).toBe(200)
-      expect(list.head.next.next.value).toBe(100)
+      expect(list.head?.value).toBe(300)
+      expect(list.head?.next?.value).toBe(200)
+      expect(list.head?.next?.next?.value).toBe(100)
       expect(list.size).toBe(3)
     })
 
@@ -37,7 +37,7 @@ describe("> SinglyLinkedList", () => {
       const list = new SinglyLinkedList<number>()
       list.append(100)
 
-      expect(list.head.value).toBe(100)
+      expect(list.head?.value).toBe(100)
       expect(list.size).toBe(1)
     })
 
@@ -47,9 +47,9 @@ describe("> SinglyLinkedList", () => {
       list.append(200)
       list.append(300)
 
-      expect(list.head.value).toBe(100)
-      expect(list.head.next.value).toBe(200)
-      expect(list.head.next.next.value).toBe(300)
+      expect(list.head?.value).toBe(100)
+      expect(list.head?.next?.value).toBe(200)
+      expect(list.head?.next?.next?.value).toBe(300)
       expect(list.size).toBe(3)
     })
 
@@ -69,8 +69,8 @@ describe("> SinglyLinkedList", () => {
       list.append(200)
       list.prepend(100)
 
-      expect(list.head.value).toBe(100)
-      expect(list.head.next.value).toBe(200)
+      expect(list.head?.value).toBe(100)
+      expect(list.head?.next?.value).toBe(200)
       expect(list.size).toBe(2)
     })
 
@@ -86,14 +86,10 @@ describe("> SinglyLinkedList", () => {
   })
 
   describe("#getList", () => {
-    test("Should return error message when no item is present", () => {
+    test("Should return empty array if no item is present", () => {
       const list = new SinglyLinkedList<number>()
 
-      // TODO(elianiva): I don't thinkg using this comparison is good
-      //                 the string might have been changed and this will fail
-      expect(list.getList()).toBe(
-        "You must have at least 1 item to get the list"
-      )
+      expect(list.getList()).toStrictEqual([])
       expect(list.size).toBe(0)
     })
 
@@ -145,6 +141,60 @@ describe("> SinglyLinkedList", () => {
 
       expect(list.getList(0)).toStrictEqual([])
       expect(list.size).toBe(2)
+    })
+  })
+
+  describe("#removeFirst", () => {
+    test("Should remove the first item on the list", () => {
+      const list = new SinglyLinkedList<number>()
+      // TODO(elianiva): Is using other function allowed? If `append` function breaks
+      //                 then this test will also fail
+      list.append(100)
+      list.append(200)
+      list.append(300)
+      list.removeFirst()
+
+      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
+      //                 then this test will also fail
+      expect(list.getList()).toStrictEqual([200, 300])
+      expect(list.size).toBe(2)
+    })
+
+    test("Should do nothing when list contains nothing", () => {
+      const list = new SinglyLinkedList<number>()
+      list.removeFirst()
+
+      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
+      //                 then this test will also fail
+      expect(list.getList()).toStrictEqual([])
+      expect(list.size).toBe(0)
+    })
+  })
+
+  describe("#removeLast", () => {
+    test("Should remove the last item on the list", () => {
+      const list = new SinglyLinkedList<number>()
+      // TODO(elianiva): Is using other function allowed? If `append` function breaks
+      //                 then this test will also fail
+      list.append(100)
+      list.append(200)
+      list.append(300)
+      list.removeLast()
+
+      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
+      //                 then this test will also fail
+      expect(list.getList()).toStrictEqual([100, 200])
+      expect(list.size).toBe(2)
+    })
+
+    test("Should do nothing when list contains nothing", () => {
+      const list = new SinglyLinkedList<number>()
+      list.removeLast()
+
+      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
+      //                 then this test will also fail
+      expect(list.getList()).toStrictEqual([])
+      expect(list.size).toBe(0)
     })
   })
 })

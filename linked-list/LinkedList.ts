@@ -61,6 +61,38 @@ class SinglyLinkedList<T> {
   }
 
   /*
+   * Will delete an item at the start of the list, constant time O(1)
+   *
+   * @return void
+   */
+  removeFirst(): void {
+    if (!this.head) return
+
+    // replace the head with the next item of the head
+    this.head = this.head.next
+    this.size--
+  }
+
+  /*
+   * Will delete an item at the end of the list, linear time O(n)
+   *
+   * @return void
+   */
+  removeLast(): void {
+    if (!this.head) return
+    let current: LinkedListNode<T> | null = this.head
+
+    // traverse the list
+    while (current?.next) {
+      current = current.next
+    }
+
+    // replace the head with the next item of the head
+    current = null
+    this.size--
+  }
+
+  /*
    * Will add new item at the end of the list, linear time O(n)
    *
    * @param {T} data that will get inserted
@@ -70,11 +102,7 @@ class SinglyLinkedList<T> {
     let current = this.head
     let result: T[] = []
 
-    if (!this.head) {
-      return "You must have at least 1 item to get the list"
-    }
-
-    if (n == 0) return []
+    if (n == 0 || !this.head) return []
 
     let limit = n || this.size
     for (let i = 0; i < limit; i++) {
