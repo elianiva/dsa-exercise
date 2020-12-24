@@ -1,8 +1,8 @@
 class LinkedListNode<T> {
   value: T
-  next: LinkedListNode<T>
+  next: LinkedListNode<T> | null
 
-  constructor(value: T, next: LinkedListNode<T>) {
+  constructor(value: T, next: LinkedListNode<T> | null) {
     this.value = value
     this.next = next
   }
@@ -14,7 +14,7 @@ class LinkedListNode<T> {
  * @return {SinglyLinkedList<T>}
  */
 class SinglyLinkedList<T> {
-  head: LinkedListNode<T>
+  head: LinkedListNode<T> | null
   size: number
 
   constructor() {
@@ -52,11 +52,11 @@ class SinglyLinkedList<T> {
     }
 
     // walk through the list if the next item is available
-    while (current.next) {
+    while (current?.next) {
       current = current.next
     }
 
-    current.next = new LinkedListNode(data, null)
+    if (current) current.next = new LinkedListNode(data, null)
     this.size++
   }
 
@@ -78,9 +78,11 @@ class SinglyLinkedList<T> {
 
     let limit = n || this.size
     for (let i = 0; i < limit; i++) {
-      result.push(current.value)
-      if (!current.next) break
-      current = current.next
+      if (current) {
+        result.push(current.value)
+        if (!current.next) break
+        current = current.next
+      }
     }
 
     return result
