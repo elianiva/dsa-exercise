@@ -8,7 +8,12 @@ class LinkedListNode<T> {
   }
 }
 
-class LinkedList<T> {
+/*
+ * Singly Linked List constructor to create a new Singly Linked List data structure
+ *
+ * @return {SinglyLinkedList<T>}
+ */
+class SinglyLinkedList<T> {
   head: LinkedListNode<T>
   size: number
 
@@ -17,13 +22,25 @@ class LinkedList<T> {
     this.size = 0
   }
 
-  prepend(data: T) {
+  /*
+   * Will add new item at the start of the list, constant time O(1)
+   *
+   * @param {T} data that will get inserted
+   * @return void
+   */
+  prepend(data: T): void {
     // replace the head with new node containing previous head as its next item
     this.head = new LinkedListNode(data, this.head)
     this.size++
   }
 
-  append(data: T) {
+  /*
+   * Will add new item at the end of the list, linear time O(n)
+   *
+   * @param {T} data that will get inserted
+   * @return void
+   */
+  append(data: T): void {
     // initial iteration is the head
     let current = this.head
 
@@ -43,7 +60,13 @@ class LinkedList<T> {
     this.size++
   }
 
-  getList() {
+  /*
+   * Will add new item at the end of the list, linear time O(n)
+   *
+   * @param {T} data that will get inserted
+   * @return void
+   */
+  getList(n?: number): string | T[] {
     let current = this.head
     let result: T[] = []
 
@@ -51,7 +74,10 @@ class LinkedList<T> {
       return "You must have at least 1 item to get the list"
     }
 
-    for (let i = 0; i < this.size; i++) {
+    if (n == 0) return []
+
+    let limit = n || this.size
+    for (let i = 0; i < limit; i++) {
       result.push(current.value)
       if (!current.next) break
       current = current.next
@@ -61,4 +87,4 @@ class LinkedList<T> {
   }
 }
 
-export { LinkedList, LinkedListNode }
+export { SinglyLinkedList, LinkedListNode }
