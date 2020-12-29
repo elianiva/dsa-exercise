@@ -93,16 +93,17 @@ class SinglyLinkedList<T> {
   }
 
   /*
-   * Will add new item at the end of the list, linear time O(n)
+   * Will add new item at the end of the list, O(1) if you get the first item,
+   * O(n) for the rest
    *
    * @param {T} data that will get inserted
    * @return void
    */
-  getList(n?: number): string | T[] {
+  getList(n?: number): T[] {
     let current = this.head
     let result: T[] = []
 
-    if (n == 0 || !this.head) return []
+    if (n === 0 || !this.head) return []
 
     let limit = n || this.size
     for (let i = 0; i < limit; i++) {
@@ -111,6 +112,28 @@ class SinglyLinkedList<T> {
         if (!current.next) break
         current = current.next
       }
+    }
+
+    return result
+  }
+
+  /*
+   * Will get the reference to a node O(n)
+   *
+   * @param {T} data that will get inserted
+   * @return void
+   */
+  getNode(n: number = 0): LinkedListNode<T> | null {
+    let current = this.head
+    let result = null
+
+    if (n === 0 || !this.head || n > this.size) return null
+
+    let limit = n || this.size
+    for (let i = 0; i < limit; i++) {
+      result = current
+      if (!current?.next) break
+      current = current.next
     }
 
     return result

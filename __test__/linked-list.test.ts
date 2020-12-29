@@ -132,7 +132,7 @@ describe("> SinglyLinkedList", () => {
       expect(list.size).toBe(4)
     })
 
-    test("Should return 0 items if index passed is 0", () => {
+    test("Should return 0 items if index is 0", () => {
       const list = new SinglyLinkedList<number>()
       // TODO(elianiva): Is using other function allowed? If `append` function breaks
       //                 then this test will also fail
@@ -140,6 +140,50 @@ describe("> SinglyLinkedList", () => {
       list.append(200)
 
       expect(list.getList(0)).toStrictEqual([])
+      expect(list.size).toBe(2)
+    })
+  })
+
+  describe("#getNode", () => {
+    test("Should return null if no item is present", () => {
+      const list = new SinglyLinkedList<number>()
+
+      expect(list.getNode()).toBeNull()
+      expect(list.size).toBe(0)
+    })
+
+    test("Should get the second node", () => {
+      const list = new SinglyLinkedList<number>()
+      // TODO(elianiva): Is using other function allowed? If `append` function breaks
+      //                 then this test will also fail
+      list.append(100)
+      list.append(200)
+      list.append(300)
+      list.append(400)
+
+      expect(list.getNode(2)?.value).toBe(200)
+      expect(list.size).toBe(4)
+    })
+
+    test("Should return null if index is out of bound", () => {
+      const list = new SinglyLinkedList<number>()
+      // TODO(elianiva): Is using other function allowed? If `append` function breaks
+      //                 then this test will also fail
+      list.append(100)
+      list.append(200)
+
+      expect(list.getNode(5)).toBeNull()
+      expect(list.size).toBe(2)
+    })
+
+    test("Should return 0 items if no index is passed (default to 0)", () => {
+      const list = new SinglyLinkedList<number>()
+      // TODO(elianiva): Is using other function allowed? If `append` function breaks
+      //                 then this test will also fail
+      list.append(100)
+      list.append(200)
+
+      expect(list.getNode()).toBeNull()
       expect(list.size).toBe(2)
     })
   })
