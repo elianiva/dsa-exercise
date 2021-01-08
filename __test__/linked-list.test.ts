@@ -95,8 +95,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should get the list item values", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
@@ -108,8 +106,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should get 2 items from the list", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
@@ -121,8 +117,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should return all items if index is out of bound", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
@@ -134,8 +128,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should return 0 items if index is 0", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
 
@@ -154,8 +146,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should get the second node", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
@@ -167,8 +157,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should return null if index is out of bound", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
 
@@ -178,8 +166,6 @@ describe("> SinglyLinkedList", () => {
 
     test("Should return 0 items if no index is passed (default to 0)", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
 
@@ -191,25 +177,11 @@ describe("> SinglyLinkedList", () => {
   describe("#removeFirst", () => {
     test("Should remove the first item on the list", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
       list.removeFirst()
 
-      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
-      //                 then this test will also fail
-      expect(list.getList()).toStrictEqual([200, 300])
-      expect(list.size).toBe(2)
-    })
-
-    test("Should do nothing when list contains nothing", () => {
-      const list = new SinglyLinkedList<number>()
-      list.removeFirst()
-
-      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
-      //                 then this test will also fail
       expect(list.getList()).toStrictEqual([])
       expect(list.size).toBe(0)
     })
@@ -218,15 +190,11 @@ describe("> SinglyLinkedList", () => {
   describe("#removeLast", () => {
     test("Should remove the last item on the list", () => {
       const list = new SinglyLinkedList<number>()
-      // TODO(elianiva): Is using other function allowed? If `append` function breaks
-      //                 then this test will also fail
       list.append(100)
       list.append(200)
       list.append(300)
       list.removeLast()
 
-      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
-      //                 then this test will also fail
       expect(list.getList()).toStrictEqual([100, 200])
       expect(list.size).toBe(2)
     })
@@ -235,8 +203,6 @@ describe("> SinglyLinkedList", () => {
       const list = new SinglyLinkedList<number>()
       list.removeLast()
 
-      // TODO(elianiva): Is using other function allowed? If `getList` function breaks
-      //                 then this test will also fail
       expect(list.getList()).toStrictEqual([])
       expect(list.size).toBe(0)
     })
