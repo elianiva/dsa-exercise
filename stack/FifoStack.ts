@@ -1,4 +1,4 @@
-export class LifoStack<T> {
+export class FifoStack<T> {
   size: number
   stack: { [key: number]: T }
 
@@ -18,27 +18,27 @@ export class LifoStack<T> {
   }
 
   /**
-   * Get the last item and remove it from the stack
+   * Get the first item and remove it from the stack
    * @param {T} item The inserted item at the end of the stack
-   * @return {T} Last item in the stack
+   * @return {T} First item in the stack
    */
   pop(): T | null {
     if (!this.size) return null
 
     // store the last item before we delete it because we want to return it
-    const temp = this.stack[this.size]
-    delete this.stack[this.size]
+    const temp = this.stack[1]
+    delete this.stack[1]
     this.size--
     return temp
   }
 
   /**
-   * Get the last item without removing it from the stack
-   * @return {T} Last item in the stack
+   * Get the first item without removing it from the stack
+   * @return {T} Last stack item
    */
   peek(): T | null {
     if (!this.size) return null
-    return this.stack[this.size]
+    return this.stack[1]
   }
 
   /**
