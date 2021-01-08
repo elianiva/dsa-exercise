@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "../linked-list/LinkedList"
+import { SinglyLinkedList } from "../linked-list/SinglyLinkedList"
 
 describe("> SinglyLinkedList", () => {
   describe("#prepend", () => {

@@ -1,3 +1,6 @@
+/**
+ * Creates a new node for Singly Linked List
+ */
 class LinkedListNode<T> {
   value: T
   next: LinkedListNode<T> | null
@@ -8,7 +11,7 @@ class LinkedListNode<T> {
   }
 }
 
-/*
+/**
  * Singly Linked List constructor to create a new Singly Linked List data structure
  *
  * @return {SinglyLinkedList<T>}
@@ -22,7 +25,7 @@ class SinglyLinkedList<T> {
     this.size = 0
   }
 
-  /*
+  /**
    * Will add new item at the start of the list, constant time O(1)
    *
    * @param {T} data that will get inserted
@@ -60,7 +63,7 @@ class SinglyLinkedList<T> {
     this.size++
   }
 
-  /*
+  /**
    * Will delete an item at the start of the list, constant time O(1)
    *
    * @return void
@@ -73,7 +76,7 @@ class SinglyLinkedList<T> {
     this.size--
   }
 
-  /*
+  /**
    * Will delete an item at the end of the list, linear time O(n)
    *
    * @return void
@@ -92,7 +95,7 @@ class SinglyLinkedList<T> {
     this.size--
   }
 
-  /*
+  /**
    * Will add new item at the end of the list, O(1) if you get the first item,
    * O(n) for the rest
    *
@@ -117,7 +120,7 @@ class SinglyLinkedList<T> {
     return result
   }
 
-  /*
+  /**
    * Will get the reference to a node O(n)
    *
    * @param {T} data that will get inserted
