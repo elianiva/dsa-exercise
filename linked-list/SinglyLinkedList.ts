@@ -103,10 +103,10 @@ class SinglyLinkedList<T> {
    * @return void
    */
   getList(n?: number): T[] {
+    if (n === 0 || !this.head) return []
+
     let current = this.head
     let result: T[] = []
-
-    if (n === 0 || !this.head) return []
 
     let limit = n || this.size
     for (let i = 0; i < limit; i++) {
@@ -127,10 +127,10 @@ class SinglyLinkedList<T> {
    * @return void
    */
   getNode(n: number = 0): LinkedListNode<T> | null {
+    if (n === 0 || !this.head || n > this.size) return null
+
     let current = this.head
     let result = null
-
-    if (n === 0 || !this.head || n > this.size) return null
 
     let limit = n || this.size
     for (let i = 0; i < limit; i++) {
