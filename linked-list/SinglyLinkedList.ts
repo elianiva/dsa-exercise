@@ -106,7 +106,7 @@ class SinglyLinkedList<T> {
     let current = this.head
     let result: T[] = []
 
-    let limit = n || this.size
+    let limit = n || this.size + 1
     for (let i = 0; i < limit; i++) {
       if (current) {
         result.push(current.value)
@@ -139,6 +139,28 @@ class SinglyLinkedList<T> {
     }
 
     return result
+  }
+
+  /**
+   * Will insert a node at the specified index O(n)
+   *
+   * @param {T} node that will get inserted
+   * @return void
+   */
+  insertAt({ data, idx }: { data: T; idx: number }): void | null {
+    if (!idx || !data) return null
+
+    if (!this.head) {
+      this.head = new LinkedListNode(data, null)
+      this.size++
+      return
+    }
+
+    const prevReplaced = this.getNode(idx - 1)
+    const replaced = this.getNode(idx)
+
+    if (prevReplaced) prevReplaced.next = new LinkedListNode(data, replaced)
+    this.size++
   }
 }
 

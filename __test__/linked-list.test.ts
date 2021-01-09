@@ -207,4 +207,46 @@ describe("> SinglyLinkedList", () => {
       expect(list.size).toBe(0)
     })
   })
+
+  describe("#insertAt", () => {
+    test("Do nothing if no data is specified", () => {
+      // this test is for Javascript, Typescript will throw an error on compile
+      // time rather than build time
+      const list = new SinglyLinkedList<number>()
+      list.insertAt({ idx: 2 })
+
+      expect(list.getList()).toStrictEqual([])
+      expect(list.size).toBe(0)
+    })
+
+    test("Insert at the first index, same as `prepend`", () => {
+      const list = new SinglyLinkedList<number>()
+      list.insertAt({ data: 500, idx: 1 })
+
+      expect(list.getList()).toStrictEqual([500])
+      expect(list.size).toBe(1)
+    })
+
+    test("Insert at the second index", () => {
+      const list = new SinglyLinkedList<number>()
+      list.append(100)
+      list.append(200)
+      list.append(300)
+      list.insertAt({ data: 500, idx: 2 })
+
+      expect(list.getList()).toStrictEqual([100, 500, 200, 300])
+      expect(list.size).toBe(4)
+    })
+
+    test("Insert at the last index, same as `append`", () => {
+      const list = new SinglyLinkedList<number>()
+      list.append(100)
+      list.append(200)
+      list.append(300)
+      list.insertAt({ data: 100, idx: 4 })
+
+      expect(list.getList()).toStrictEqual([100, 200, 300, 100])
+      expect(list.size).toBe(4)
+    })
+  })
 })
