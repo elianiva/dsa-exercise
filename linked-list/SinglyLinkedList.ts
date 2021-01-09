@@ -83,6 +83,7 @@ class SinglyLinkedList<T> {
    */
   removeLast(): void {
     if (!this.head) return
+
     let current: LinkedListNode<T> | null = this.head
 
     // traverse the list
@@ -90,17 +91,17 @@ class SinglyLinkedList<T> {
       current = current.next
     }
 
-    // replace the head with the next item of the head
+    // replace the last item with null to remove it
     current = null
     this.size--
   }
 
   /**
-   * Will add new item at the end of the list, O(1) if you get the first item,
-   * O(n) for the rest
+   * Will get the list, O(1) if you get the first item, O(n) for the rest.
+   * Returns all items if no argument is provided
    *
    * @param {T} data that will get inserted
-   * @return void
+   * @return T[]
    */
   getList(n?: number): T[] {
     if (n === 0 || !this.head) return []
@@ -121,13 +122,14 @@ class SinglyLinkedList<T> {
   }
 
   /**
-   * Will get the reference to a node O(n)
+   * Will get the reference to nth node, O(1) if you get the first item,
+   * O(n) for the rest.
    *
-   * @param {T} data that will get inserted
+   * @param {number} n node position
    * @return void
    */
-  getNode(n: number = 0): LinkedListNode<T> | null {
-    if (n === 0 || !this.head || n > this.size) return null
+  getNode(n?: number): LinkedListNode<T> | null {
+    if (!n || !this.head || n > this.size) return null
 
     let current = this.head
     let result = null

@@ -140,7 +140,7 @@ describe("> SinglyLinkedList", () => {
     test("Should return null if no item is present", () => {
       const list = new SinglyLinkedList<number>()
 
-      expect(list.getNode()).toBeNull()
+      expect(list.getNode(1)).toBeNull()
       expect(list.size).toBe(0)
     })
 
@@ -164,7 +164,7 @@ describe("> SinglyLinkedList", () => {
       expect(list.size).toBe(2)
     })
 
-    test("Should return 0 items if no index is passed (default to 0)", () => {
+    test("Should return null if no index is passed", () => {
       const list = new SinglyLinkedList<number>()
       list.append(100)
       list.append(200)
@@ -182,8 +182,8 @@ describe("> SinglyLinkedList", () => {
       list.append(300)
       list.removeFirst()
 
-      expect(list.getList()).toStrictEqual([])
-      expect(list.size).toBe(0)
+      expect(list.getList()).toStrictEqual([200, 300])
+      expect(list.size).toBe(2)
     })
   })
 
@@ -192,7 +192,7 @@ describe("> SinglyLinkedList", () => {
       const list = new SinglyLinkedList<number>()
       list.append(100)
       list.append(200)
-      list.append(300)
+      list.append(5000)
       list.removeLast()
 
       expect(list.getList()).toStrictEqual([100, 200])
