@@ -87,12 +87,9 @@ class SinglyLinkedList<T> {
     let current: LinkedListNode<T> | null = this.head
 
     // traverse the list
-    while (current?.next) {
-      current = current.next
-    }
+    for (let i = 1; i < this.size - 1; i++) current &&= current.next
 
-    // replace the last item with null to remove it
-    current = null
+    if (current) current.next = null
     this.size--
   }
 
