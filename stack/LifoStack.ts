@@ -1,20 +1,8 @@
-export class LifoStack<T> {
-  size: number
-  stack: { [key: number]: T }
+import { Stack } from "./Stack"
 
+export class LifoStack<T> extends Stack<T> {
   constructor() {
-    this.size = 0
-    this.stack = {}
-  }
-
-  /**
-   * Add a new item to the stack
-   * @param {T} item The inserted item at the end of the stack
-   * @return {void}
-   */
-  add(item: T): void {
-    this.stack[this.size + 1] = item
-    this.size++
+    super()
   }
 
   /**
@@ -39,14 +27,5 @@ export class LifoStack<T> {
   peek(): T | null {
     if (!this.size) return null
     return this.stack[this.size]
-  }
-
-  /**
-   * Get all items from the stack
-   * @return {T[]} all items in the stack
-   */
-  all(): T[] | null {
-    if (!this.size) return null
-    return Object.values(this.stack)
   }
 }
