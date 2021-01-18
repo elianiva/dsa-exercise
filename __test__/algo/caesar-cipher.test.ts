@@ -1,4 +1,4 @@
-import { encrypt, decrypt } from "../algo/caesar-cipher"
+import { encrypt, decrypt } from "../../algo"
 
 const RAW = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
 const RAW_LOWER = "the quick brown fox jumps over the lazy dog"

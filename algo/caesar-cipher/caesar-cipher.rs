@@ -2,13 +2,13 @@ use std::char;
 
 fn main() {
     // const RAW: &str = "THE BROWN FOX JUMPS OVER THE LAZY DOG";
-    const RAW: &str = "tHiS iS An unNEcesSarYLy loNg SenTeNCe tO TeST iF my CodE WOrkS";
-    const SHIFT: i32 = 10;
+    const RAW: &str = "tHiS iS An unNEcesSariLy loNg SenTeNCe tO TeST iF my CodE WOrkS";
+    const SHIFT: i32 = 12;
 
     let encrypted = encrypt(RAW, SHIFT);
 
-    println!("{}", encrypted);
-    println!("{}", decrypt(&encrypted[..], SHIFT));
+    println!("enc: {}", encrypted);
+    println!("dec: {}", decrypt(&encrypted[..], SHIFT));
 }
 
 fn modulo(x: i32, y: i32) -> u32 {
