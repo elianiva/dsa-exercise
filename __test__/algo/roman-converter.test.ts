@@ -1,0 +1,22 @@
+import { convertToRoman } from "../../algo/fcc-algo-ex/roman-converter"
+
+describe("> Roman Numeral Converter", () => {
+  test("should return empty string", () => expect(convertToRoman(0)).toBe(""))
+  test("should return empty string", () => expect(convertToRoman(-2)).toBe(""))
+  test("should return II", () => expect(convertToRoman(2)).toBe("II"))
+  test("should return III", () => expect(convertToRoman(3)).toBe("III"))
+  test("should return V", () => expect(convertToRoman(5)).toBe("V"))
+  test("should return IX", () => expect(convertToRoman(9)).toBe("IX"))
+  test("should return XII", () => expect(convertToRoman(12)).toBe("XII"))
+  test("should return XVI", () => expect(convertToRoman(16)).toBe("XVI"))
+  test("should return XXIX", () => expect(convertToRoman(29)).toBe("XXIX"))
+  test("should return XLV", () => expect(convertToRoman(45)).toBe("XLV"))
+  test("should return LXVIII", () => expect(convertToRoman(68)).toBe("LXVIII"))
+  test("should return XCVII", () => expect(convertToRoman(97)).toBe("XCVII"))
+  test("should return CD", () => expect(convertToRoman(400)).toBe("CD"))
+  test("should return D", () => expect(convertToRoman(500)).toBe("D"))
+  test("should return DCXLIX", () => expect(convertToRoman(649)).toBe("DCXLIX"))
+  test("should return MIV", () => expect(convertToRoman(1004)).toBe("MIV"))
+  test("should return MXXIII", () => expect(convertToRoman(1023)).toBe("MXXIII"))
+  test("should return MMMCMXCIX", () => expect(convertToRoman(3999)).toBe("MMMCMXCIX"))
+})
