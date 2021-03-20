@@ -7,8 +7,8 @@ export class FifoStack<T> extends Stack<T> {
 
   /**
    * Get the first item and remove it from the stack
-   * @param {T} item The inserted item at the end of the stack
-   * @return {T} First item in the stack
+   *
+   * @return {T | null} First item in the stack
    */
   pop(): T | null {
     if (!this.size) return null

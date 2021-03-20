@@ -1,4 +1,4 @@
-import { LifoStack, FifoStack } from "../stack"
+import { FifoStack, LifoStack } from "../stack"
 
 describe("> LifoStack", () => {
   describe("#add", () => {

@@ -7,8 +7,8 @@ export class LifoStack<T> extends Stack<T> {
 
   /**
    * Get the last item and remove it from the stack
-   * @param {T} item The inserted item at the end of the stack
-   * @return {T} Last item in the stack
+   *
+   * @return {T | null} Last item in the stack
    */
   pop(): T | null {
     if (!this.size) return null
@@ -22,6 +22,7 @@ export class LifoStack<T> extends Stack<T> {
 
   /**
    * Get the last item without removing it from the stack
+   *
    * @return {T} Last item in the stack
    */
   peek(): T | null {

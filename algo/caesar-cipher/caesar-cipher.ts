@@ -38,7 +38,6 @@ export const decrypt = (raw: string, shift: number): string => {
     .map((char: string) => {
       const charCode = char.charCodeAt(0)
       const asciiShift = char === char.toUpperCase() ? 65 : 97
-      // 66 - 97 = -31 - 13 = -44 % 26 = 18 + 97 = 125
       return char === " "
         ? " "
         : String.fromCharCode(
