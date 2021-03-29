@@ -1,0 +1,12 @@
+  if (!parens) return true
+  if (parens === "(" || parens[0] === ")") return false
+
+  let open = []
+  for (const paren of parens) {
+    if (paren === "(") open.push(paren)
+    if (paren === ")") open.splice(0, 1)
+    // if (!open.pop()) return false
+  }
+
+  if (open.length !== 0) return false
+  return true

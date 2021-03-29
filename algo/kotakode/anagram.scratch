@@ -1,0 +1,88 @@
+count = 0
+
+efc has d -> 1
+efc has c -> 1
+efc has e -> 1
+
+------------ useless
+function membuatAnagram(str1, str2) {
+  const strToObj = x => x.split('').reduce((acc, curr) => {
+    if (typeof acc[curr] === "undefined") return {...acc, [curr]: 1}
+    return {...acc, [curr]: acc[curr] + 1}
+  }, {})
+
+  const str1Map = strToObj(str1)
+  const str2Map = strToObj(str2)
+
+  let count = 0
+  for (const [key, val] of Object.entries(str1Map)) {
+    if (!str2Map.hasOwnProperty(key)) count++
+  }
+  for (const [key, val] of Object.entries(str2Map)) {
+    if (!str1Map.hasOwnProperty(key)) count++
+  }
+
+  return count
+}
+
+-------------
+count = 0
+
+dce has c -> 1
+dce has e -> 2
+
+--------------
+count = 0
+
+--------------
+function membuatAnagram(str1, str2) {
+  const pat1 = new RegExp(`([^${str1}])(?!.*\\1)`, 'gi')
+  const pat2 = new RegExp(`([^${str2}])(?!.*\\1)`, 'gi')
+
+  return (str1.match(pat2)?.length ?? 0) + (str2.match(pat1)?.length ?? 0)
+}
+
+----------------
+
+count = 0
+
+cdfea `has` a -> 0
+cdfea `has` f -> 0
+cdfea `has` b -> 1
+cdfea `has` b -> 2
+cdfea `has` k -> 3
+
+afbbk `has` c -> 1
+afbbk `has` d -> 2
+afbbk `has` f -> 2
+afbbk `has` e -> 3
+afbbk `has` a -> 3
+
+---------------
+aac has a/c -> 0
+aac has a/c -> 0
+
+--------------
+function membuatAnagram(str1, str2) {
+  const firstSlice = str1.split('')
+  const secondSlice = str2.split('')
+  let tmp = []
+
+  let count = 0
+  for (let [val, idx] of firstSlice) {
+    if (!secondSlice.includes(val) && !tmp.includes(val)) {
+      count++
+      tmp.push(val)
+    }
+  }
+  console.log(tmp)
+  tmp = []
+  for (let [val, idx] of secondSlice) {
+    if (!firstSlice.includes(val) && !tmp.includes(val)) {
+      count++
+      tmp.push(val)
+    }
+  }
+
+  return count
+}
